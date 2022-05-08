@@ -35,8 +35,6 @@ wrap.append(note)
 note.append(note1)
 note.append(note2)
 
-
-
 // отрисовка клавиатуры
 
 const controls = ['Backspace', 'Tab', 'Delete', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft',  'Win', 'AltLeft', 'Space', 'AltRight', 'ArrowUp', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight']
@@ -58,24 +56,42 @@ const renderButtons = (arr, container) => {
 
 renderButtons(BTN_DATA, keyboard)
 
-// const LETTER_KEYS = document.querySelectorAll('.key-k')
-// let flag = 'en'
-
-// const printButtons = (button, input) => {
-//   input.focus()
-
-//   input.value += button.innerHTML
-  
-//   return input.value
-// }
+// Клик по кнопке
 
 
+document.addEventListener('keydown', (el) => {
+  const keys = document.querySelectorAll('.key')
+  for (let key of keys) {
+    console.log('клавиша нажата ', el.key)
+    if (el.code === key.getAttribute('data')) {
+      key.classList.add('active')
+    }
+  }
+})
 
-const arrKeyboard = ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Enter', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Backslash', 'IntlBackslash', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'Space']
+document.addEventListener('keyup', (el) => {
+  const keys = document.querySelectorAll('.key')
+  for (const key of keys) {
+    if (el.code === key.getAttribute('data')) {
+        key.classList.remove('active')
+    }
+  }
+})
 
-// document.onkeypress = function (event) {
-//   arrKeyboard.push(event.code)
-// }
+keyboard.addEventListener('mousedown', (el) => {
+  const keys = document.querySelectorAll('.key')
+  for (const key of keys) {
+    if (el.target.getAttribute('data') === key.getAttribute('data')) {
+      key.classList.add('active')
+    }
+  }
+});
 
-
-
+keyboard.addEventListener('mouseup', (el) => {
+  const keys = document.querySelectorAll('.key')
+  for (const key of keys) {
+    if (el.target.getAttribute('data') === key.getAttribute('data')) {
+      key.classList.remove('active')
+    }
+  }
+});
