@@ -3,3 +3,86 @@
   margin: 0;
   border: 0;
   box-sizing: border-box;}
+
+.wrap {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 20px;
+  align-items: center;
+}
+
+h1 {
+  font-size: 30px;
+  color: rgba(4 110 133 / 80%);
+}
+
+.textarea {
+  display: block;
+  width: 710px;
+  height: 200px;
+  margin: 10px auto 10px;
+  padding: 10px;
+  font-size: 18px;
+  color: #444444;
+  overflow: auto;
+  border-width: 1px;
+  border-style: solid;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-radius: 3px;
+  resize: none;
+}
+textarea:focus {
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+}
+
+.keyboard_wrap {
+  margin: 0 auto;
+  width: 710px;
+  margin: 0 auto;
+  padding: 5px;
+  background: #9a9a9a;;
+  border: 2px solid #8e8e8e;
+  border-radius: 5px;
+}
+
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  width: 696px;
+  gap: 4px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.keyboard .key {
+  float: left;
+  width: 40px;
+  height: 40px;
+  font-weight: 500;
+  line-height: 40px;
+  text-align: center;
+  color: #222222;
+  background: #dadada;
+  border-radius: 3px;
+  cursor: pointer;
+  user-select: none;
+  transition: border-radius 0.3s, background-color 0.3s;
+}
+
+.key-control {
+  background: #646464 !important;
+  color: #dadada !important;
+}
+.key-wide {
+  width: 100px !important;
+}
+.key-wide2 {
+  width: 50px !important;
+}
+.space {
+  width: 286px !important;
+  background: #dadada !important;
+}
