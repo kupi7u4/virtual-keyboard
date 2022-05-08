@@ -1,1 +1,0 @@
-{"version":3,"file":"main.js","mappings":";;;;;AAAAA,OAAO,CAACC,GAAR,CAAY,eAAZ,E","sources":["webpack://virtual-keyboard/./src/index.js"],"sourcesContent":["console.log('init keyboard')"],"names":["console","log"],"sourceRoot":""}
