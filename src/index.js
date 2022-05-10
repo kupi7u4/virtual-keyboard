@@ -58,18 +58,41 @@ renderButtons(BTN_DATA, keyboard)
 
 // Клик по кнопке
 
+const printButtons = (key, textarea) => {
+  textarea.focus()
+  if (key.getAttribute('data') === 'Backspace') {
+    textarea.setRangeText('', textarea.selectionStart - 1, textarea.selectionEnd)
+  } else if (key.getAttribute('data') === 'Delete') {
+    textarea.setRangeText('', textarea.selectionStart, textarea.selectionEnd + 1)
+  } else if (key.getAttribute('data') === 'Enter') {
+    textarea.value += '\n'
+  } else if (key.getAttribute('data') === 'Tab') {
+    textarea.value += '\t'
+  } else if (key.getAttribute('data') === 'Space') {
+    textarea.value += ' '
+  } else if (key.getAttribute('data') === 'CapsLock') {
+    return textarea.value;
+  } else {
+    textarea.value += key.innerHTML
+  }
+  
+  return textarea.value
+}
 
 document.addEventListener('keydown', (el) => {
+  el.preventDefault()
   const keys = document.querySelectorAll('.key')
   for (let key of keys) {
     console.log('клавиша нажата ', el.key)
     if (el.code === key.getAttribute('data')) {
+      printButtons(key, textarea)
       key.classList.add('active')
     }
   }
 })
 
 document.addEventListener('keyup', (el) => {
+  el.preventDefault()
   const keys = document.querySelectorAll('.key')
   for (const key of keys) {
     if (el.code === key.getAttribute('data')) {
@@ -83,6 +106,7 @@ keyboard.addEventListener('mousedown', (el) => {
   for (const key of keys) {
     if (el.target.getAttribute('data') === key.getAttribute('data')) {
       key.classList.add('active')
+      printButtons(key, textarea)
     }
   }
 });
